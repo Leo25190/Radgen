@@ -1,4 +1,4 @@
-﻿@page "/"
+@page "/"
 @using Radgen.Data;
 
 <PageTitle>Index</PageTitle>
@@ -7,16 +7,23 @@
 
 <EditForm Model="_radzenGridOptions">
     <div class="row">
-        <div class="col">
-            <input type="checkbox" id="AllowPaging" @bind="_radzenGridOptions.AllowPaging" />
-            <label for="AllowPaging">Allow paging</label>
+        <div class="col-2">
+            <div>
+                <input type="checkbox" id="AllowPaging" @bind="_radzenGridOptions.AllowPaging" />
+                <label for="AllowPaging">Allow paging</label>
+            </div>
+            <div>
+                <input type="checkbox" id="AllowSorting" @bind="_radzenGridOptions.AllowSorting" />
+                <label for="AllowSorting">Allow sorting</label>
+            </div>
         </div>
+
         <div class="col">
             <pre>
             <code>
-               &lt;RadzenGrid
-                    AllowPaging="@_radzenGridOptions.AllowPaging"&gt;
-                &lt;/RadzenGrid&gt;               
+               &lt;RadzenGrid AllowPaging="@_radzenGridOptions.AllowPaging" AllowSorting="@_radzenGridOptions.AllowSorting"&gt;
+
+               &lt;/RadzenGrid&gt;
             </code>
             </pre>
         </div>
@@ -24,7 +31,7 @@
     @* <button type="submit" onclick=""></button> *@
 </EditForm>
 
-@code{
+@code {
     private RadzenGridOptions _radzenGridOptions = new RadzenGridOptions();
 
     protected override async Task OnInitializedAsync()
